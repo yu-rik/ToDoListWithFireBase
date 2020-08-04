@@ -5,15 +5,8 @@ target 'ToDoListWithFireBase' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Firebase/Analytics'
-  pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Storage'
-  pod 'Firebase/DynamicLinks'
-  pod 'Firebase/InAppMessaging'
   pod 'Firebase/Database'
-  pod 'Firebase/RemoteConfig'
+pod 'Firebase/Analytics' 
 
 end
