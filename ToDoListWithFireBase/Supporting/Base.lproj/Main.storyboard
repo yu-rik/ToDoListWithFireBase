@@ -112,6 +112,7 @@
                         <outlet property="passwordTF" destination="Otz-dS-2Hg" id="iOm-db-t1m"/>
                         <outlet property="warnLabel" destination="4lz-Ke-XYo" id="DgU-kV-IEh"/>
                         <segue destination="hlC-2A-7zw" kind="show" identifier="TasksSegue" id="NP0-ZB-lPp"/>
+                        <segue destination="hlC-2A-7zw" kind="show" identifier="frt" id="3CE-hg-OMQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -144,6 +145,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tasks" id="ibz-gz-2VX">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="bQ8-Fa-CGh">
+                            <connections>
+                                <action selector="signOutTapped:" destination="zY3-0F-XIh" id="qwN-yQ-yw6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dSu-A3-8H2">
                             <connections>
                                 <action selector="addAction:" destination="zY3-0F-XIh" id="b93-Wq-lGr"/>
@@ -178,4 +184,7 @@
             <point key="canvasLocation" x="915.94202898550736" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3CE-hg-OMQ"/>
+    </inferredMetricsTieBreakers>
 </document>

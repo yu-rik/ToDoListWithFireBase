@@ -19,7 +19,12 @@ class LoginViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailTF.text = ""
+        passwordTF.text = ""
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         warnLabel.alpha = 0
@@ -55,22 +60,32 @@ class LoginViewController: UIViewController {
             displayWarningLabel(withText: "Info isn't correct")
             return }
         
-        Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: pass) { [weak self] (user, error) in
             if error != nil {
-                self.displayWarningLabel(withText: "Error!!!!")
+                self?.displayWarningLabel(withText: "Error!!!!")
                 return
             }
             if user != nil {
-                self.performSegue(withIdentifier: "TasksSegue", sender: nil)
+                self?.performSegue(withIdentifier: "TasksSegue", sender: nil)
                 return
             }
-            self.displayWarningLabel(withText: "No such user")
+            self?.displayWarningLabel(withText: "No such user")
         }
     }
         
     @IBAction func registerTapped(_ sender: UIButton) {
+        guard let email = emailTF.text, let pass = passwordTF.text, email != "", pass != "" else {
+            displayWarningLabel(withText: "Info isn't correct")
+            return }
+        
+        Auth.auth().createUser(withEmail: email, password: pass, completion:  { [weak self] (user, error) in
+            if error != nil {
+                if user != nil{
+                    self?.performSegue(withIdentifier: "TasksSegue", sender: nil)
+                    //self?.performSegue(withIdentifier: "frt", sender: nil)
+                }
+            }
+        })
     }
-    
- 
 }
 
