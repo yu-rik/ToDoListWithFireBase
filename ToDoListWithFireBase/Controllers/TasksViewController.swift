@@ -32,6 +32,25 @@ class TasksViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     @IBAction func addAction(_ sender: UIBarButtonItem) {
+       //создаем алерт контроллер
+        let alertContr = UIAlertController(title: "New task", message: "Add new task", preferredStyle: .alert)
+       //добавляем текстовое поле
+        alertContr.addTextField()
+        
+        //добавляем две кнопки сохранить и отменить
+        let save = UIAlertAction(title: "Save", style: .default) { _  in
+            guard let textField = alertContr.textFields?.first, textField.text != "" else {return}
+            //создание задачи и место ее хранения
+            //let Task
+            //ler taskReferense
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        //добавление кнопок в алертКонтроллер
+        alertContr.addAction(save)
+        alertContr.addAction(cancel)
+        //отображение
+        present(alertContr, animated: true, completion: nil)
+        
     }
     
     @IBAction func signOutTapped(_ sender: UIBarButtonItem) {
