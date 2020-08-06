@@ -15,7 +15,7 @@ struct  Task {
     let ref: DatabaseReference?
     var completed: Bool = false
     
-    //инициализатор для создпния объекта лдокальнл
+    //инициализатор для создания объекта локально
     init (title: String, userId: String) {
         self.title = title
         self.personId = userId
@@ -28,5 +28,9 @@ struct  Task {
         personId = snapShotValue["personId"] as! String
         completed = snapShotValue["completed"] as! Bool
         ref = snapshot.ref
+    }
+    
+    func convertToDictionary() ->Any{
+        return ["title": title, "personId": personId, "completed": completed ]
     }
 }
